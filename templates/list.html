@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <table class="table table-striped">
+    <caption>List of Action items</caption>
+  <thead>
+
+      <th scope="col">Name</th>
+      <th scope="col">Location</th>
+
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for item in items %}
+    <tr>
+
+        <td>{{ item.name}}</td>
+        <td>{{ item.location}}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
