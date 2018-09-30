@@ -47,7 +47,8 @@ def hello():
 
 @app.route("/list")
 def listing():
-    return render_template('list.html', items = members)
+    items = ActivityItem.query.all()
+    return render_template('list.html', items = items)
 
 @app.route("/create", methods = ["POST","GET"])
 def new_item():

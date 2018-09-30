@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "responsive.html" %}
 
 {% block content %}
     <table class="table table-striped">
@@ -6,7 +6,9 @@
   <thead>
 
       <th scope="col">Name</th>
-      <th scope="col">Location</th>
+      <th scope="col">Content</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date created</th>
 
     </tr>
   </thead>
@@ -16,7 +18,10 @@
     <tr>
 
         <td>{{ item.name}}</td>
-        <td>{{ item.location}}</td>
+        <td>{{ item.content}}</td>
+        <td>{{ item.status}}</td>
+        <td>{{ item.date_created}}</td>
+
       </tr>
       {% endfor %}
   </tbody>
