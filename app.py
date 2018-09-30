@@ -42,7 +42,7 @@ class ToDo(FlaskForm):
 
 @app.route("/")
 def hello():
-    return render_template('responsive.html')
+    return redirect(url_for('listing'))
 
 
 @app.route("/list")
