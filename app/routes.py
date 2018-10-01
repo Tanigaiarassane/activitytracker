@@ -15,7 +15,7 @@ def base():
 
 @app.route("/sample")
 def sample():
-    return render_template("sample.html", greetings="Hello sir", title="Sample")
+    return render_template("sample.html", greetings="Thanks for using Activity Tracker.", title="Sample")
 
 @app.route("/todo/list")
 @login_required
