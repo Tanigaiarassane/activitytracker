@@ -20,7 +20,7 @@ def sample():
 @app.route("/todo/list")
 @login_required
 def listing():
-    print "current user {}".format(current_user)
+    #print "current user {}".format(current_user)
     todo = ActivityItem.query.all()
     return render_template("listing.html", todo=todo, title="Item litem")
 
@@ -29,23 +29,23 @@ def listing():
 def create():
     form = ToDO()
     if form.validate_on_submit():
-        print "welcome"
-        print "Submitted values - {} -  {} - {}".format(form.name.data, form.content.data, form.status.data)
+        #print "welcome"
+        #print "Submitted values - {} -  {} - {}".format(form.name.data, form.content.data, form.status.data)
         activity = ActivityItem(name=form.name.data, content=form.content.data,status=form.status.data,user_id = current_user.id)
         db.session.add(activity)
         db.session.commit()
         message = "Successfully created an activity - {}".format(activity.name)
         flash(message, "success")
         return redirect( url_for('item', item_id=activity.id) )
-    print "outside"
+    #print "outside"
     return render_template("create.html",  message="Create item", form=form)
 
 @app.route("/todo/curr_user_list", methods = ["POST","GET"])
 @login_required
 def curruser_list():
     user = User.query.filter_by(id=current_user.id).first()
-    print user
-    print "id {} ".format(current_user.email)
+    #print user
+    #print "id {} ".format(current_user.email)
     if user:
         todo = user.todo_list
         return render_template("listing.html", todo=todo, title="Item List")
@@ -53,7 +53,7 @@ def curruser_list():
 
 @app.route("/todo/item/<int:item_id>", methods = ["POST","GET"])
 def item(item_id):
-    print item_id
+    #print item_id
     todo = ActivityItem.query.get_or_404(item_id)
     return render_template('list.html', todo = todo)
 
@@ -61,7 +61,7 @@ def item(item_id):
 def update(todo_id):
     todo = ActivityItem.query.get_or_404(todo_id)
     form = ToDO()
-    print "todo id - {} ; current use"
+    #print "todo id - {} ; current use"
     if todo.user_id != current_user.id:
         msg = "You do not have permission to update this list"
         flash(msg, "failure")
