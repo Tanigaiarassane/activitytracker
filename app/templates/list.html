@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+   <div class="card">
+       <div class="card-header bg-secondary text-warning"><h6>Activity Details</h6></div>
+       <div class="card-body">
+            <h5 class="card-title ">{{todo.name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Status : {{todo.status}}</h6>
+            <p class="card-text">{{todo.content}}</p>
+            <a href="{{url_for('update',todo_id=todo.id)}}" class="card-link">Update</a>
+            <a href="{{url_for('delete',todo_id=todo.id)}}" class="card-link">Delete</a>
+            <a href="{{url_for('listing')}}" class="card-link">All Items</a>
+        </div>
+    </div>
+{% endblock %}

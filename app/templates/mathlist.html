@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table class="table table-striped">
+    <caption>List of Action items</caption>
+  <thead>
+
+      <th scope="col">Name</th>
+      <th scope="col">Hit</th>
+      <th scope="col">Created on</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for item in todo%}
+    <tr>
+        <td>{{ item.name}}</td>
+        <td>{{ item.hit}}</td>
+        <td>{{ item.date_created}} </td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

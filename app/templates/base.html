@@ -1,0 +1,101 @@
+<div>
+
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+    {% if title%}
+        <title>ToDo listing - {{ title }}</title>
+    {% else%}
+    <title>ToDo Listing </title>
+    {% endif %}
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="col-md-2 col-sx-8 bg-info"></div>
+        <div class="col-md-8 col-sx-8 bg-info">
+                {% block top %}
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a class="navbar-brand text-warning" href="#"> Activity Tracker </a>
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                            <li class="nav-item"><a class="nav-link text-white" href="{{url_for('create')}}">New </a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="{{url_for('listing')}}">List</a></li>
+                            <li class="nav-item"><a class="nav-link text-white" href="#">Query</a></li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                              <button class="btn btn-outline-success text-warning my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div class="navbar-nav">
+                        {% if current_user.is_authenticated %}
+                            <a class="nav-item nav-link text-white" href="{{ url_for('curruser_list') }}">My List</a>
+                            <a class="nav-item nav-link text-white" href="{{ url_for('logout') }}">Logout</a>
+                        {% else %}
+                            <a class="nav-item nav-link text-white" href="{{ url_for('login') }}">Login</a>
+                            <a class="nav-item nav-link text-white" href="{{ url_for('signin') }}">Register</a>
+                        {% endif %}
+                    </div>
+                </nav>
+                {% endblock top %}
+            </div>
+                <div class="col-md-2 col-sx-8 bg-info"></div>
+
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-md-2 col-sx-6">
+            <!-- Card -->
+<div class="card p-2">
+
+  <!-- Card image -->
+  <div class="view overlay">
+    <img class="card-img-top" src="{{url_for('static',filename='srinivasa-ramanujan.jpg')}}" alt="Card image cap">
+    <a href="#!">
+      <div class="mask rgba-white-slight"></div>
+    </a>
+  </div>
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h4 class="card-title">Mathematicians</h4>
+    <!-- Text -->
+    <p class="card-text">Renowned scholars in the world who shaped the way the generations think and act.. Based on page visits</p>
+    <!-- Button -->
+    <a href="#" class="btn btn-primary">Button</a>
+
+  </div>
+
+</div>
+        </div>
+
+        <div class="col-md-6 col-sx-6 p-2">
+            <br>
+             {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                      <div class="alert alert-{{ category }}">
+                       {{ message }}
+                      </div>
+                    {% endfor %}
+                 {% endif %}
+          {% endwith %}
+          {% block content %}{% endblock %}
+
+        </div>
+        <div class="col-md-4 col-sx-2">
+         </div>
+    </div>
+<!--Main Navigation-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
