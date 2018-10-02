@@ -11,7 +11,7 @@ from flask_login import login_user, current_user, logout_user, login_required
 
 @app.route("/")
 def base():
-    return render_template("base.html")
+    return redirect(url_for('login'))
 
 @app.route("/sample")
 def sample():
