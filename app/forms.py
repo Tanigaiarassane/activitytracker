@@ -8,7 +8,7 @@ class ToDO(FlaskForm):
     name = StringField('Title',validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     status = SelectField('Status', choices=[('New', 'New'),
-                                                 ('In Progress', 'Progress'), ('Closed', 'Closed') ])
+                                                 ('Progress', 'Progress'), ('Closed', 'Closed') ])
     submit = SubmitField('Submit')
 
 
