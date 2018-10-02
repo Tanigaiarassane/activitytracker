@@ -109,7 +109,7 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password,form.password.data):
             login_user(user, remember=form.remember.data)
-            msg = "Logged in {}".format(current_user.id)
+            msg = "Logged in {}".format(current_user.name)
             flash(msg,"success")
             return redirect(url_for('listing'))
     return render_template("LoginForm.html", form = form)
