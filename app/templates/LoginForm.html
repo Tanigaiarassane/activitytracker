@@ -2,7 +2,12 @@
 
 {% block content %}
     <h1>{{message}}</h1>
-    <form action="" method="post">
+
+
+
+   <div class="card p-4">
+       <div class="card-body">
+            <form action="" method="post">
         {{ form.hidden_tag() }}
 
 
@@ -29,5 +34,7 @@
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
     </form>
+        </div>
+    </div>
 {% endblock %}
 
