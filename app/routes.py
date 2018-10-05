@@ -104,7 +104,6 @@ def signin():
         flash(msg,"success")
     return render_template("SignInForm.html",message="Register", form=form)
 
-
 @app.route("/login", methods = ["POST", "GET"])
 def login():
     form = LoginForm()
