@@ -20,8 +20,11 @@ def sample():
 @app.route("/todo/list")
 @login_required
 def listing():
-    #print "current user {}".format(current_user)
-    todo = ActivityItem.query.all()
+    user = User.query.filter_by(id=current_user.id).first()
+    # print user
+    # print "id {} ".format(current_user.email)
+    if user:
+        todo = user.todo_list
     return render_template("listing.html", todo=todo, title="Item litem")
 
 @app.route("/todo/create", methods = ['GET', 'POST'])
@@ -99,7 +102,7 @@ def signin():
         db.session.commit()
         msg = "Created user {}".format(form.name.data)
         flash(msg,"success")
-    return render_template("SignInForm.html", form=form)
+    return render_template("SignInForm.html",message="Register", form=form)
 
 
 @app.route("/login", methods = ["POST", "GET"])
@@ -112,12 +115,13 @@ def login():
             msg = "Logged in {}".format(current_user.name)
             flash(msg,"success")
             return redirect(url_for('listing'))
-    return render_template("LoginForm.html", form = form)
+    return render_template("LoginForm.html", message = "Login", form = form)
 
 @app.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for('sample'))
+    flash("Thanks for using Activity Tracker", "success")
+    return redirect(url_for('login'))
 
 ############################ Webscrapping services #####################
 @app.route('/topN')

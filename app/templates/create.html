@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{message}}</h1>
-    <form action="" method="post">
-        {{ form.hidden_tag() }}
 
+<div class="card p-4">
 
-        <fieldset>
+    <div class="card-header bg-secondary text-warning"><h6>{{message}}</h6></div>
+    <div class="card-body">
+
+            <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <fieldset>
 
                 <div class="form-group">
                     {{ form.name.label(class="form-control-label") }}
@@ -26,10 +29,13 @@
 
                 </div>
 
-        </fieldset>
+           </fieldset>
              <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
-    </form>
+            </form>
+     </div>
+</div>
 {% endblock %}
+
 

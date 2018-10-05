@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{message}}</h1>
+   <div class="card p-4">
+                  <div class="card-header"><h6>{{ message }}</h6></div>
+
+       <div class="card-body">
     <form action="" method="post">
         {{ form.hidden_tag() }}
         <fieldset>
@@ -53,5 +56,6 @@
                 {{ form.submit(class="btn btn-outline-info") }}
             </div>
     </form>
+       </div>
 {% endblock %}
 

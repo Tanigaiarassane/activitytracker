@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>{{message}}</h1>
-
 
 
    <div class="card p-4">
+       <div class="card-header"><h6>{{message}}</h6></div>
        <div class="card-body">
             <form action="" method="post">
         {{ form.hidden_tag() }}
@@ -35,6 +34,11 @@
             </div>
     </form>
         </div>
+       <div class="alert alert-secondary" role="alert"><h6>
+  New user? <a href="{{ url_for('signin') }}">Register Here!</a></h6>
+</div>
     </div>
+
+
 {% endblock %}
 
