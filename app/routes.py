@@ -17,14 +17,15 @@ def base():
 def sample():
     return render_template("sample.html", greetings="Thanks for using Activity Tracker.", title="Sample")
 
-@app.route("/todo/list")
+@app.route("/todo/list",methods = ["POST","GET"])
 @login_required
 def listing():
-    user = User.query.filter_by(id=current_user.id).first()
+    page = request.args.get('page',1, type=int)
+
+    todo = ActivityItem.query.filter_by(user_id=current_user.id).paginate(page,app.config['pages_per_page'],False)
     # print user
     # print "id {} ".format(current_user.email)
-    if user:
-        todo = user.todo_list
+
     return render_template("listing.html", todo=todo, title="Item litem")
 
 @app.route("/todo/create", methods = ['GET', 'POST'])

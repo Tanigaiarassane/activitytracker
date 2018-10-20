@@ -14,7 +14,7 @@
   </thead>
   <tbody>
 
-    {% for item in todo%}
+    {% for item in todo.items%}
     <tr>
         <td><a class="article-title" href="{{ url_for('item', item_id=item.id) }}">{{ item.name}}</a></td>
         <td>{{ item.content}}</td>
@@ -25,4 +25,7 @@
   </tbody>
 </table>
 <div>
+
+    {% if todo.has_prev %}<a class="btn btn-outline-info btn-sm" href="{{ url_for('listing', page=todo.prev_num) }}"> Prev </a>{% else %} <a class="btn btn-secondary btn-sm disabled">Prev</a> {% endif %}
+{% if todo.has_next %}<a class="btn btn-outline-info btn-sm" href="{{ url_for('listing', page=todo.next_num) }}">Next </a>{% else %}<a class="btn btn-secondary btn-sm disabled">Next</a>{% endif %}
 {% endblock content %}
