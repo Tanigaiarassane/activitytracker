@@ -1,0 +1,97 @@
+1. STudent Table
+ STUDENT’S NAME
+ FATHER'S NAME
+ ADHAAR NUMBER
+ STUDENTS PROFFICIENCY
+ PLACE OF BIRTH
+ DATE OF BIRTH
+ Season - 2020-21
+ AGE (Years/Months/Days)
+ STUDENT’S OCCUPATION
+ STANDARD / DESIGNATION
+ SCHOOL/ COLLEGE / COMPANY NAME
+ RESIDENTIAL ADDRESS
+ CONTACT 1
+ CONTACT 2
+	MAIL ID
+	STUDENT’S T-SHIRT SIZE.
+	STUDENT’S LOWER SIZE.
+	STUDENT’S NAME ON THE T-SHIRT.
+	player_id(Primary key)
+
+
+2. Attendance:
+Date
+Attendance (common separated)  1,4,6,19,34
+
+3. Fee
+player_id
+date
+paid_for
+amountpaid
+type - match, coaching
+
+
+4. ****fitness
+player_id
+
+5. ***Pysio
+player_id
+
+.6 ***coach report
+player_id
+batting
+bowling
+fieldinng
+wicket_keeping
+
+7. **match
+date 
+match_number
+time
+played_against
+player_id
+runs_scored
+balls_faced
+innings
+overs
+runs_given
+wickets_taken
+
+Data entry screen:
+1. Attendance
+2. Match details
+3. Student details 
+	- fee
+	- match fee
+	- pysio
+	- fitness
+	- coach report
+	- query
+
+
+Views:
+1. Attendance view
+2. Fees view
+3. students performance view
+ - Attendance
+ - payment
+ - pyshio
+ - fitness
+ - match view 
+
+
+4. student match view
+5. Query across age group
+
+
+
+
+
+
+
+
+
+
+
+ 
